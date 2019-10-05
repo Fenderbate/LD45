@@ -2,20 +2,22 @@ extends Interactable
 
 export(String,"Food","Gold","Item")var hold = "Food"
 
-var stole = false
+var used = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	detail = str("Steal ",hold.to_lower())
 
 func interact():
-	if stole:
+	if used:
 		return
+	used = true
 	print("stole ",hold)
 	Global.greed += 1
 	if hold == "Food":
 		Global.gluttony += 1
 	elif hold == "Gold":
-		Global.greed += 1
+		pass
+		#Global.greed += 1
 	elif hold == "Item":
 		print("Item stealing has no funtion!")

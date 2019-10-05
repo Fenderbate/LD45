@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/person/Person.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 45.218
@@ -8,10 +9,16 @@ radius = 45.218
 [node name="Person" type="Area2D"]
 linear_damp = 50.0
 script = ExtResource( 1 )
+detail = "Steal Money"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 polygon = PoolVector2Array( -0.251923, -1.20479, 20, -90, 60, -100, 20, -120, 0, -170, -40, -160, -30, -140, -10, -140, -10, -120, -50, -100, -10, -90 )
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 0.843137, 0, 0, 1 )
+texture = ExtResource( 2 )
 

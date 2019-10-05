@@ -7,9 +7,14 @@ func _ready():
 	pass # Replace with function body.
 
 func interact():
+	
 	if used:
 		return
 	used = true
-	print("Stole some money :v")
-	Global.greed += 1
-		
+	SignalHandler.emit_signal("player_active",false)
+	Global.lust += 1
+	$Timer.start()
+
+
+func _on_Timer_timeout():
+	SignalHandler.emit_signal("player_active",true)

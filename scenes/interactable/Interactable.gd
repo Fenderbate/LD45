@@ -2,6 +2,8 @@ extends Area2D
 
 class_name Interactable
 
+export(String)var detail = "N/A"
+
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
