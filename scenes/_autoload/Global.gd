@@ -25,18 +25,25 @@ var max_greed = 3
 func set_greed(value):
 	generic_set_get(value,greed,max_greed,"Greed+")
 
-var sloth = 0
+var sloth = 0 setget set_sloth
 var max_sloth = 3
+func set_sloth(value):
+	generic_set_get(value,sloth,max_sloth,"Sloth+")
 
-var wrath = 0
+var wrath = 0 setget set_wrath
 var max_wrath = 3
+func set_wrath(value):
+	generic_set_get(value,wrath,max_wrath,"Wrath+")
 
-var envy = 0
+var envy = 0 setget set_envy
 var max_envy = 3
+func set_envy(value):
+	generic_set_get(value,envy,max_envy,"Envy+")
 
-var pride = 0
+var pride = 0 setget set_pride
 var max_pride = 3
-
+func set_pride(value):
+	generic_set_get(value,pride,max_pride,"Pride+")
 
 # generic_set_get(value,var1,var2,"N/A")
 
@@ -51,7 +58,7 @@ func _ready():
 	pass # Replace with function body.
 
 	
-func reset_sins():
+func reset():
 	lust = 0
 	gluttony = 0
 	greed = 0

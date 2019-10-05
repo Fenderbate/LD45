@@ -16,7 +16,6 @@ func _ready():
 	$PopupPivot.hide()
 	
 	if !get_parent().has_node("FollowCam"):
-		print("asd")
 		var cam = load("res://scenes/followcam/FollowCam.tscn").instance()
 		cam.target_path = get_path()
 		cam.global_position = global_position
@@ -66,7 +65,7 @@ func _on_player_active_changed(state):
 func _on_InteractRange_area_entered(area):
 	if area is Interactable and !area.used:
 		interact_target = area
-		$PopupPivot/PopupLabel.text = area.detail
+		$PopupPivot/PopupLabel.text = str("E\n",area.detail)
 		$PopupPivot.show()
 
 
