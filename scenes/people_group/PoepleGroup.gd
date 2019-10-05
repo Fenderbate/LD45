@@ -6,9 +6,9 @@ func _ready():
 	pass # Replace with function body.
 
 func interact():
+	
 	if used:
 		return
+	Global.envy += 1
+	Global.wrath += 1
 	used = true
-	print("Stole some money :v")
-	Global.greed += 1
-		

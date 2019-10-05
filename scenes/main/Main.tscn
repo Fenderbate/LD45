@@ -1,19 +1,15 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/main/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/person/Person.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/market_stand/MarketStand.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/lust_house/Lusthouse.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/people_group/PoepleGroup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/homeless/Homeless.tscn" type="PackedScene" id=7]
 
 [node name="Main" type="YSort"]
 script = ExtResource( 1 )
-
-[node name="Polygon2D" type="Polygon2D" parent="."]
-position = Vector2( 371.382, 281.597 )
-z_index = -1
-color = Color( 0, 0, 0, 1 )
-polygon = PoolVector2Array( 29.9422, -75.3043, -88.4104, 49.8501, 51.7082, 104.265, 84.3571, 4.95779, 145.574, 192.689, 231.277, -8.64594, 168.7, -107.953 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 69, 62 )
@@ -43,4 +39,10 @@ position = Vector2( 470, 20.4056 )
 
 [node name="Lusthouse" parent="." instance=ExtResource( 5 )]
 position = Vector2( 574.221, 40.4056 )
+
+[node name="PoepleGroup" parent="." instance=ExtResource( 6 )]
+position = Vector2( 194.534, 316.967 )
+
+[node name="Homeless" parent="PoepleGroup" instance=ExtResource( 7 )]
+position = Vector2( -99.3073, 103.388 )
 

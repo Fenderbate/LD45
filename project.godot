@@ -29,6 +29,10 @@ config/icon="res://icon.png"
 SignalHandler="*res://scenes/_autoload/SignalHandler.gd"
 Global="*res://scenes/_autoload/Global.gd"
 
+[display]
+
+window/size/height=768
+
 [importer_defaults]
 
 texture={

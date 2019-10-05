@@ -43,10 +43,18 @@ func _input(event):
 	
 	if !active:
 		return
+	if event is InputEventKey and event.pressed:
+		if event.scancode == KEY_E and interact_target != null:
+			interact_target.interact()
+			$PopupPivot.hide()
+		
+		if event.scancode == KEY_Q and Global.max_sins():
+			print("you win!")
+		else:
+			print("you're not ready.")
+		
 	
-	if interact_target != null and event is InputEventKey and event.scancode == KEY_E and event.pressed:
-		interact_target.interact()
-		$PopupPivot.hide()
+	
 	
 
 func _on_player_active_changed(state):

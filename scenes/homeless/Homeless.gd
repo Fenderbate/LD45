@@ -8,7 +8,5 @@ func _ready():
 func interact():
 	if used:
 		return
+	Global.pride += 1
 	used = true
-	print("Stole some money :v")
-	Global.greed += 1
-		

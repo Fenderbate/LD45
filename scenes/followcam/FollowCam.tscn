@@ -1,8 +1,11 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/followcam/FollowCam.gd" type="Script" id=1]
+[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://misc/fonts/font.tres" type="DynamicFont" id=3]
 
 [node name="FollowCam" type="Position2D"]
+position = Vector2( 512, 384 )
 script = ExtResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -12,3 +15,182 @@ drag_margin_top = 0.0
 drag_margin_right = 0.0
 drag_margin_bottom = 0.0
 
+[node name="CanvasLayer" type="CanvasLayer" parent="Camera2D"]
+
+[node name="UI" type="Control" parent="Camera2D/CanvasLayer"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="SinContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/UI"]
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+margin_left = -367.5
+margin_top = -100.0
+margin_right = 367.5
+mouse_filter = 2
+alignment = 1
+
+[node name="Lust" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
+margin_left = 5.0
+margin_right = 105.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+max_value = 1.0
+step = 0.01
+allow_greater = true
+texture_progress = ExtResource( 2 )
+fill_mode = 3
+nine_patch_stretch = true
+
+[node name="Gluttony" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
+margin_left = 109.0
+margin_right = 209.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+max_value = 1.0
+step = 0.01
+allow_greater = true
+texture_progress = ExtResource( 2 )
+fill_mode = 3
+nine_patch_stretch = true
+
+[node name="Greed" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
+margin_left = 213.0
+margin_right = 313.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+max_value = 1.0
+step = 0.01
+allow_greater = true
+texture_progress = ExtResource( 2 )
+fill_mode = 3
+nine_patch_stretch = true
+
+[node name="Sloth" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
+margin_left = 317.0
+margin_right = 417.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+max_value = 1.0
+step = 0.01
+allow_greater = true
+texture_progress = ExtResource( 2 )
+fill_mode = 3
+nine_patch_stretch = true
+
+[node name="Wrath" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
+margin_left = 421.0
+margin_right = 521.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+max_value = 1.0
+step = 0.01
+allow_greater = true
+texture_progress = ExtResource( 2 )
+fill_mode = 3
+nine_patch_stretch = true
+
+[node name="Envy" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
+margin_left = 525.0
+margin_right = 625.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+max_value = 1.0
+step = 0.01
+allow_greater = true
+texture_progress = ExtResource( 2 )
+fill_mode = 3
+nine_patch_stretch = true
+
+[node name="Pride" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
+margin_left = 629.0
+margin_right = 729.0
+margin_bottom = 100.0
+rect_min_size = Vector2( 100, 100 )
+max_value = 1.0
+step = 0.01
+allow_greater = true
+texture_progress = ExtResource( 2 )
+fill_mode = 3
+nine_patch_stretch = true
+
+[node name="SinDescription" type="TextureRect" parent="Camera2D/CanvasLayer/UI"]
+editor/display_folded = true
+visible = false
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -262.0
+margin_top = -340.0
+margin_right = 262.0
+margin_bottom = 262.0
+mouse_filter = 2
+
+[node name="Border" type="ColorRect" parent="Camera2D/CanvasLayer/UI/SinDescription"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color( 0, 0, 0, 1 )
+
+[node name="BG" type="ColorRect" parent="Camera2D/CanvasLayer/UI/SinDescription"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 10.0
+margin_right = -10.0
+margin_bottom = -40.0
+mouse_filter = 2
+color = Color( 0.168627, 0.243137, 0.282353, 1 )
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Camera2D/CanvasLayer/UI/SinDescription"]
+editor/display_folded = true
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = 10.0
+margin_right = -20.0
+margin_bottom = -40.0
+scroll_horizontal_enabled = false
+
+[node name="DescriptionLabel" type="Label" parent="Camera2D/CanvasLayer/UI/SinDescription/ScrollContainer"]
+margin_right = 484.0
+margin_bottom = 1273.0
+rect_min_size = Vector2( 484, 0 )
+custom_fonts/font = ExtResource( 3 )
+text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum porttitor tortor, sed dignissim leo mattis ut. Integer orci lorem, tincidunt vitae diam non, molestie ultrices justo. Duis eu venenatis eros, in tempus magna. Nullam ullamcorper, enim eu laoreet imperdiet, eros tortor pharetra eros, eu sodales nibh mauris a velit. Vestibulum mollis enim sed blandit efficitur. Sed dolor turpis, lobortis eu volutpat in, dignissim ac magna. Curabitur maximus leo eget purus ullamcorper, vel vestibulum nisi ornare. In et tortor vitae nisl gravida condimentum eu eu augue. Sed quis nibh ut turpis ultricies porta. Nulla facilisis vestibulum sagittis. Suspendisse vitae pulvinar dolor. Ut sed bibendum ligula. Morbi cursus mi diam. Fusce aliquam ultrices dapibus. Nulla id turpis quis nulla euismod fringilla a et libero. Mauris interdum neque eu accumsan fringilla."
+valign = 1
+autowrap = true
+
+[node name="Controls" type="HBoxContainer" parent="Camera2D/CanvasLayer/UI/SinDescription"]
+editor/display_folded = true
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -38.0
+alignment = 1
+
+[node name="Left" type="TextureButton" parent="Camera2D/CanvasLayer/UI/SinDescription/Controls"]
+margin_left = 94.0
+margin_right = 158.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 50, 0 )
+texture_normal = ExtResource( 2 )
+
+[node name="TextureButton3" type="Control" parent="Camera2D/CanvasLayer/UI/SinDescription/Controls"]
+margin_left = 162.0
+margin_right = 362.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 200, 0 )
+
+[node name="Right" type="TextureButton" parent="Camera2D/CanvasLayer/UI/SinDescription/Controls"]
+margin_left = 366.0
+margin_right = 430.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 50, 0 )
+texture_normal = ExtResource( 2 )
+
+[connection signal="button_down" from="Camera2D/CanvasLayer/UI/SinDescription/Controls/Left" to="." method="_on_Left_button_down"]
+[connection signal="button_down" from="Camera2D/CanvasLayer/UI/SinDescription/Controls/Right" to="." method="_on_Right_button_down"]
