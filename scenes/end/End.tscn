@@ -1,0 +1,78 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/end/End.gd" type="Script" id=1]
+[ext_resource path="res://misc/fonts/font.tres" type="DynamicFont" id=2]
+
+[sub_resource type="Animation" id=1]
+resource_name = "fade_in"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+}
+
+[node name="End" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+
+[node name="RealEnding" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "I went home and took a sleeping pill so
+I would have a deep sleep.
+I went to hell and found my dad.
+We argued and he game me the combination.
+When I wanted to leave the demons told
+me I can't leave, that I died.
+Oh boy. I messed up."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="FakeEnding" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "I went home and took a sleeping pill so
+I would have a deep sleep.
+After sleeping I woke up. I didn't meet my dad.
+Then someone knocked on my door.
+ It was the police.
+Oh boy. I messed up."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="GoodEnding" type="Label" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 2 )
+text = "I changed my mind.
+Causing bad for such a petty thing is redicilous.
+I can open the safe without the combination anyway."
+align = 1
+valign = 1
+autowrap = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "fade_in"
+anims/fade_in = SubResource( 1 )
+

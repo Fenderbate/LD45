@@ -1,6 +1,7 @@
 extends Node
 
-var player
+var player = null
+var player_active = true
 
 var floater = preload("res://scenes/floating_text/FloatingText.tscn")
 
@@ -26,7 +27,7 @@ func set_greed(value):
 	greed = generic_set_get(value,greed,max_greed,"Greed+")
 
 var sloth = 0 setget set_sloth
-var max_sloth = 3
+var max_sloth = 1
 func set_sloth(value):
 	sloth = generic_set_get(value,sloth,max_sloth,"Sloth+")
 
@@ -49,7 +50,8 @@ func set_pride(value):
 
 func generic_set_get(new_value, base_var, max_var, floater_text):
 	base_var = new_value
-	spawn_floater(player,floater_text)
+	if player != null and player.get_ref():
+		spawn_floater(player.get_ref(),floater_text)
 	if base_var > max_var:
 		base_var = max_var
 	return base_var
@@ -77,6 +79,12 @@ func spawn_floater(target, text = ""):
 
 
 func max_sins():
-	if lust == max_lust and gluttony == max_gluttony and greed == max_greed and sloth == max_sloth and wrath == max_wrath and envy == max_envy and pride == max_pride:
+	if lust == max_lust and gluttony == max_gluttony and greed == max_greed and wrath == max_wrath and envy == max_envy and pride == max_pride:
 		return true
+	return false
+
+func no_sins():
+	if lust == 0 and gluttony == 0 and greed == 0 and wrath == 0 and envy == 0 and pride == 0 and sloth == 0:
+		return true
+	print(lust,gluttony,greed,sloth,wrath,envy,pride)
 	return false

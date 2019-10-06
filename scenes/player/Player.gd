@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+class_name Player
+
 var dir = Vector2()
 var motion = Vector2()
 export(float)var speed = 100
@@ -10,8 +12,7 @@ var active = true
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	Global.player = self
+	Global.player = weakref(self)
 	
 	$PopupPivot.hide()
 	
@@ -22,6 +23,7 @@ func _ready():
 		get_parent().call_deferred("add_child",cam)
 	
 	SignalHandler.connect("player_active",self,"_on_player_active_changed")
+	SignalHandler.connect("request_player",self,"on_player_requested")
 	
 
 func _physics_process(delta):
@@ -48,10 +50,8 @@ func _input(event):
 			interact_target.interact()
 			$PopupPivot.hide()
 		
-		if event.scancode == KEY_Q and Global.max_sins():
-			print("you win!")
-		else:
-			print("you're not ready.")
+		if event.scancode == KEY_Q:
+			SignalHandler.emit_signal("window_show_pressed")
 		
 	
 	
@@ -59,16 +59,15 @@ func _input(event):
 
 func _on_player_active_changed(state):
 	active = state
+	Global.player_active = state
 	if state:
-		print("Player can play again")
 		$Sprite.show()
-		$CollisionShape.disabled = false
-		$InteractRange/DetectionShape.disabled = false
+		$CollisionShape.set_deferred("disabled",false)
+		$InteractRange/DetectionShape.set_deferred("disabled",false)
 	else:
 		$Sprite.hide()
-		$CollisionShape.disabled = true
-		$InteractRange/DetectionShape.disabled = true
-		print("Player is disabled")
+		$CollisionShape.set_deferred("disabled",true)
+		$InteractRange/DetectionShape.set_deferred("disabled",true)
 
 func _on_InteractRange_area_entered(area):
 	if area is Interactable and !area.used:
@@ -81,3 +80,7 @@ func _on_InteractRange_area_exited(area):
 	if interact_target == area:
 		interact_target = null
 		$PopupPivot.hide()
+
+func on_player_requested():
+	SignalHandler.emit_signal("deliver_player",self)
+

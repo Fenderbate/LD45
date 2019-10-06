@@ -1,12 +1,13 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/main/Main.gd" type="Script" id=1]
 [ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/person/Person.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/market_stand/MarketStand.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/lust_house/Lusthouse.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/people_group/PoepleGroup.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/homeless/Homeless.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/homeless/Homeless.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/people_group/PoepleGroup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/angry_person/AngryPerson.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/market_stand/MarketStand.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/lust_house/Lusthouse.tscn" type="PackedScene" id=8]
 
 [node name="Main" type="YSort"]
 script = ExtResource( 1 )
@@ -14,35 +15,68 @@ script = ExtResource( 1 )
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 69, 62 )
 
-[node name="Person" parent="." instance=ExtResource( 3 )]
+[node name="People" type="YSort" parent="."]
+
+[node name="Person" parent="People" instance=ExtResource( 3 )]
 position = Vector2( 391.788, 244.867 )
 
-[node name="Person2" parent="." instance=ExtResource( 3 )]
+[node name="Person2" parent="People" instance=ExtResource( 3 )]
 position = Vector2( 514.221, 246.228 )
 
-[node name="Person3" parent="." instance=ExtResource( 3 )]
+[node name="Person3" parent="People" instance=ExtResource( 3 )]
 position = Vector2( 636.655, 246.228 )
 
-[node name="Person4" parent="." instance=ExtResource( 3 )]
+[node name="Person4" parent="People" instance=ExtResource( 3 )]
 position = Vector2( 755.008, 247.588 )
 
-[node name="MarketStand" parent="." instance=ExtResource( 4 )]
+[node name="Homeless" parent="People" instance=ExtResource( 4 )]
+position = Vector2( 95.2267, 420.355 )
+
+[node name="Homeless2" parent="People" instance=ExtResource( 4 )]
+position = Vector2( 200, 420.355 )
+
+[node name="Homeless3" parent="People" instance=ExtResource( 4 )]
+position = Vector2( 300, 420 )
+
+[node name="Homeless4" parent="People" instance=ExtResource( 4 )]
+position = Vector2( 400, 420.355 )
+
+[node name="Homeless5" parent="People" instance=ExtResource( 4 )]
+position = Vector2( 500, 420 )
+
+[node name="PoepleGroup" parent="People" instance=ExtResource( 5 )]
+position = Vector2( 620, 420 )
+
+[node name="PoepleGroup2" parent="People" instance=ExtResource( 5 )]
+position = Vector2( 750, 420 )
+
+[node name="PoepleGroup3" parent="People" instance=ExtResource( 5 )]
+position = Vector2( 750, 530 )
+
+[node name="PoepleGroup4" parent="People" instance=ExtResource( 5 )]
+position = Vector2( 620, 530 )
+
+[node name="AngryPerson" parent="People" instance=ExtResource( 6 )]
+position = Vector2( 244.867, 219.092 )
+
+[node name="Buildings" type="YSort" parent="."]
+editor/display_folded = true
+
+[node name="MarketStand" parent="Buildings" instance=ExtResource( 7 )]
 position = Vector2( 212.218, 20.4056 )
-hold = "Item"
 
-[node name="MarketStand2" parent="." instance=ExtResource( 4 )]
+[node name="MarketStand2" parent="Buildings" instance=ExtResource( 7 )]
 position = Vector2( 340, 20 )
-hold = "Gold"
 
-[node name="MarketStand3" parent="." instance=ExtResource( 4 )]
+[node name="MarketStand3" parent="Buildings" instance=ExtResource( 7 )]
 position = Vector2( 470, 20.4056 )
 
-[node name="Lusthouse" parent="." instance=ExtResource( 5 )]
+[node name="Lusthouse" parent="Buildings" instance=ExtResource( 8 )]
 position = Vector2( 574.221, 40.4056 )
 
-[node name="PoepleGroup" parent="." instance=ExtResource( 6 )]
-position = Vector2( 194.534, 316.967 )
+[node name="Lusthouse2" parent="Buildings" instance=ExtResource( 8 )]
+position = Vector2( 660, 40.4056 )
 
-[node name="Homeless" parent="PoepleGroup" instance=ExtResource( 7 )]
-position = Vector2( -99.3073, 103.388 )
+[node name="Lusthouse3" parent="Buildings" instance=ExtResource( 8 )]
+position = Vector2( 750, 40.4056 )
 

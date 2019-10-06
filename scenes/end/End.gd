@@ -1,4 +1,4 @@
-extends YSort
+extends Control
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -6,10 +6,13 @@ extends YSort
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Global.reset()
+	if Global.no_sins():
+		$GoodEnding.show()
+	elif Global.max_sins():
+		$RealEnding.show()
+	else:
+		$FakeEnding.show()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
-
-

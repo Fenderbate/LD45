@@ -13,21 +13,31 @@ _global_script_classes=[ {
 "class": "Interactable",
 "language": "GDScript",
 "path": "res://scenes/interactable/Interactable.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "Player",
+"language": "GDScript",
+"path": "res://scenes/player/Player.gd"
 } ]
 _global_script_class_icons={
-"Interactable": ""
+"Interactable": "",
+"Player": ""
 }
 
 [application]
 
 config/name="LD45"
-run/main_scene="res://scenes/main/Main.tscn"
+run/main_scene="res://scenes/into/Into.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
 SignalHandler="*res://scenes/_autoload/SignalHandler.gd"
 Global="*res://scenes/_autoload/Global.gd"
+
+[debug]
+
+gdscript/warnings/enable=false
 
 [display]
 

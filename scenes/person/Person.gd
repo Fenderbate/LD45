@@ -9,6 +9,5 @@ func interact():
 	if used:
 		return
 	used = true
-	print("Stole some money :v")
 	Global.greed += 1
 		

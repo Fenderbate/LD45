@@ -19,6 +19,6 @@ visible = false
 polygon = PoolVector2Array( -0.251923, -1.20479, 20, -90, 60, -100, 20, -120, 0, -170, -40, -160, -30, -140, -10, -140, -10, -120, -50, -100, -10, -90 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.843137, 0, 0, 1 )
+modulate = Color( 0.843137, 0.811765, 0, 1 )
 texture = ExtResource( 2 )
 
