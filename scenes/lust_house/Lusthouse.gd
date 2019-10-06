@@ -1,5 +1,6 @@
 extends Interactable
 
+class_name LustHouse
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -29,3 +29,8 @@ func _on_AngryPerson_body_entered(body):
 		b.global_position = target.global_position
 		get_parent().add_child(b)
 		queue_free()
+
+func _on_AngryPerson_area_entered(area):
+	if area is PlayerBrawl:
+		area.meter -= 20
+		queue_free()

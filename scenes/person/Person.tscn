@@ -14,11 +14,11 @@ detail = "Steal Money"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Polygon2D" type="Polygon2D" parent="."]
-visible = false
-polygon = PoolVector2Array( -0.251923, -1.20479, 20, -90, 60, -100, 20, -120, 0, -170, -40, -160, -30, -140, -10, -140, -10, -120, -50, -100, -10, -90 )
-
 [node name="Sprite" type="Sprite" parent="."]
 modulate = Color( 0.843137, 0.811765, 0, 1 )
 texture = ExtResource( 2 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -1.19209e-006, 0 )
+scale = Vector2( 3, 3 )
 

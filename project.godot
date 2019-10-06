@@ -14,14 +14,26 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://scenes/interactable/Interactable.gd"
 }, {
+"base": "Interactable",
+"class": "LustHouse",
+"language": "GDScript",
+"path": "res://scenes/lust_house/Lusthouse.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://scenes/player/Player.gd"
+}, {
+"base": "Node2D",
+"class": "PlayerBrawl",
+"language": "GDScript",
+"path": "res://scenes/player_brawl/PlayerBrawl.gd"
 } ]
 _global_script_class_icons={
 "Interactable": "",
-"Player": ""
+"LustHouse": "",
+"Player": "",
+"PlayerBrawl": ""
 }
 
 [application]

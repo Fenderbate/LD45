@@ -3,6 +3,8 @@ extends Node
 var player = null
 var player_active = true
 
+var people = []
+
 var floater = preload("res://scenes/floating_text/FloatingText.tscn")
 
 #--------------------------------------------------------------------#
@@ -12,39 +14,39 @@ var last_floater_position = Vector2()
 #--------------------------------------------------------------------#
 
 var lust = 0 setget set_lust
-var max_lust = 3
+var max_lust = 10
 func set_lust(value):
-	lust = generic_set_get(value,lust,max_lust,"Lust+")
+	lust = generic_set_get(value,lust,max_lust,"Lust+" if value >= pride else "Lust-")
 
 var gluttony = 0setget set_gluttony
-var max_gluttony = 3
+var max_gluttony = 10
 func set_gluttony(value):
-	gluttony = generic_set_get(value,gluttony,max_gluttony,"Gluttony+")
+	gluttony = generic_set_get(value,gluttony,max_gluttony,"Gluttony+" if value >= pride else "Gluttony-")
 
 var greed = 0 setget set_greed
-var max_greed = 3
+var max_greed = 10
 func set_greed(value):
-	greed = generic_set_get(value,greed,max_greed,"Greed+")
+	greed = generic_set_get(value,greed,max_greed,"Greed+" if value >= pride else "Greed-")
 
 var sloth = 0 setget set_sloth
 var max_sloth = 1
 func set_sloth(value):
-	sloth = generic_set_get(value,sloth,max_sloth,"Sloth+")
+	sloth = generic_set_get(value,sloth,max_sloth,"Sloth+" if value >= pride else "Sloth-")
 
 var wrath = 0 setget set_wrath
-var max_wrath = 3
+var max_wrath = 10
 func set_wrath(value):
-	wrath = generic_set_get(value,wrath,max_wrath,"Wrath+")
+	wrath = generic_set_get(value,wrath,max_wrath,"Wrath+" if value >= pride else "Wrath-")
 
 var envy = 0 setget set_envy
-var max_envy = 3
+var max_envy = 10
 func set_envy(value):
-	envy = generic_set_get(value,envy,max_envy,"Envy+")
+	envy = generic_set_get(value,envy,max_envy,"Envy+" if value >= pride else "Envy-")
 
 var pride = 0 setget set_pride
-var max_pride = 3
+var max_pride = 10
 func set_pride(value):
-	pride = generic_set_get(value,pride,max_pride,"Pride+")
+	pride = generic_set_get(value,pride,max_pride,"Pride+" if value >= pride else "Pride-")
 
 # generic_set_get(value,var1,var2,"N/A")
 
@@ -58,7 +60,8 @@ func generic_set_get(new_value, base_var, max_var, floater_text):
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	SignalHandler.connect("signal_presence",self,"on_presence_singaled")
+	SignalHandler.connect("player_did_bad",self,"pn_player_done_bad")
 
 	
 func reset():
@@ -88,3 +91,25 @@ func no_sins():
 		return true
 	print(lust,gluttony,greed,sloth,wrath,envy,pride)
 	return false
+
+func select_angry_person():
+	randomize()
+	var index = randi() % people.size()
+	if people[index].get_ref():
+		people[index].get_ref().get_angry()
+	else:
+		select_angry_person()
+	
+
+func pn_player_done_bad():
+	randomize()
+	if rand_range(0,100) > 60:
+		people = []
+		SignalHandler.emit_signal("request_presence")
+	
+		yield(get_tree().create_timer(0.15),"timeout")
+		select_angry_person()
+	
+
+func on_presence_singaled(present_object):
+	people.append(present_object)

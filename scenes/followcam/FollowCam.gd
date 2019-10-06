@@ -43,7 +43,7 @@ func _input(event):
 			sin_page -= 1
 		elif event.scancode == KEY_RIGHT and sin_page < sin_decriptions.size() - 1:
 			sin_page += 1
-		if event.scancode == KEY_SPACE:
+		if event.scancode == KEY_E:
 			if !tablet:
 				$Camera2D/CanvasLayer/UI/SinDescription/DescriptionAP.play("tablet_up")
 				tablet = true

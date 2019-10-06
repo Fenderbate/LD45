@@ -25,6 +25,7 @@ func _ready():
 	SignalHandler.connect("player_active",self,"_on_player_active_changed")
 	SignalHandler.connect("request_player",self,"on_player_requested")
 	
+	
 
 func _physics_process(delta):
 	
@@ -46,8 +47,10 @@ func _input(event):
 	if !active:
 		return
 	if event is InputEventKey and event.pressed:
-		if event.scancode == KEY_E and interact_target != null:
+		if event.scancode == KEY_SPACE and interact_target != null:
 			interact_target.interact()
+			if !(interact_target is LustHouse):
+				SignalHandler.emit_signal("player_did_bad")
 			$PopupPivot.hide()
 		
 		if event.scancode == KEY_Q:
@@ -72,7 +75,7 @@ func _on_player_active_changed(state):
 func _on_InteractRange_area_entered(area):
 	if area is Interactable and !area.used:
 		interact_target = area
-		$PopupPivot/PopupLabel.text = str("E\n",area.detail)
+		$PopupPivot/PopupLabel.text = str("Space\n",area.detail)
 		$PopupPivot.show()
 
 
