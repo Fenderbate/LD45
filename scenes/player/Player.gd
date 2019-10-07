@@ -50,8 +50,6 @@ func _physics_process(delta):
 		if $AnimationPlayer.current_animation == "walk":
 			$AnimationPlayer.play("stand")
 	
-	print($AnimationPlayer.current_animation)
-	
 
 func _input(event):
 	

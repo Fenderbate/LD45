@@ -43,9 +43,8 @@ func _input(event):
 			sin_page -= 1
 		elif event.scancode == KEY_RIGHT and sin_page < sin_decriptions.size() - 1:
 			sin_page += 1
+		update_info()
 		
-		$Camera2D/CanvasLayer/UI/SinDescription/ScrollContainer/DescriptionLabel.text = sin_decriptions[sin_page]
-		$Camera2D/CanvasLayer/UI/SinDescription/Icon.texture.region = Rect2(34 * sin_page,0,34,32)
 		
 		if event.scancode == KEY_E:
 			if !tablet:
@@ -60,6 +59,10 @@ func _input(event):
 		
 	
 
+func update_info():
+	$Camera2D/CanvasLayer/UI/SinDescription/ScrollContainer/DescriptionLabel.text = sin_decriptions[sin_page]
+	$Camera2D/CanvasLayer/UI/SinDescription/Icon.texture.region = Rect2(34 * sin_page,0,34,32)
+
 func update_meters():
 	$Camera2D/CanvasLayer/UI/SinContainer/Lust.value =1.0 - float(Global.lust) / Global.max_lust
 	$Camera2D/CanvasLayer/UI/SinContainer/Gluttony.value = 1.0 - float(Global.gluttony) / Global.max_gluttony
@@ -72,11 +75,13 @@ func update_meters():
 func _on_Left_button_down():
 	if sin_page > 0:
 		sin_page -= 1
+	update_info()
 
 
 func _on_Right_button_down():
 	if sin_page < sin_decriptions.size() - 1:
 		sin_page += 1
+	update_info()
 
 func on_gone_sleep():
 	$Camera2D/CanvasLayer/AnimationPlayer.play("fade_out")
@@ -88,3 +93,4 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 			Global.sloth = Global.max_sloth
 		print("move sloth setting up from the followcam script!!")
 		get_tree().change_scene("res://scenes/end/End.tscn")
+

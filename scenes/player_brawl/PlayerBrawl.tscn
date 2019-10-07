@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/player_brawl/PlayerBrawl.gd" type="Script" id=1]
 [ext_resource path="res://sprites/fight_cloud.png" type="Texture" id=2]
 [ext_resource path="res://misc/fonts/font2_huge.tres" type="DynamicFont" id=3]
-[ext_resource path="res://sprites/progress_bar_placeholder.png" type="Texture" id=4]
+[ext_resource path="res://sprites/fight_bar_bg.png" type="Texture" id=4]
+[ext_resource path="res://sprites/fight_bar_progress.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "roll"
@@ -119,8 +120,11 @@ margin_left = -150.0
 margin_top = 131.0
 margin_right = 150.0
 margin_bottom = 231.0
+mouse_filter = 2
 value = 50.0
-texture_progress = ExtResource( 4 )
+texture_under = ExtResource( 4 )
+texture_progress = ExtResource( 5 )
+nine_patch_stretch = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 3 )

@@ -1,9 +1,11 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/market_stand/MarketStand.gd" type="Script" id=1]
+[ext_resource path="res://sprites/stand.png" type="Texture" id=2]
+[ext_resource path="res://sprites/stand_items_2.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 40, 20 )
+extents = Vector2( 37, 15 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 20 )
@@ -12,7 +14,7 @@ extents = Vector2( 30, 20 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 30 )
+position = Vector2( 0, 25 )
 shape = SubResource( 1 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -23,6 +25,7 @@ position = Vector2( 0, -10 )
 shape = SubResource( 2 )
 
 [node name="Polygon2D" type="Polygon2D" parent="StaticBody2D"]
+visible = false
 color = Color( 0.223529, 0.545098, 0.0588235, 1 )
 polygon = PoolVector2Array( -30, -20, 30, -20, 30, 10, -30, 10 )
 
@@ -37,6 +40,12 @@ pause_animations = false
 freeze_bodies = false
 pause_particles = false
 pause_animated_sprites = false
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Items" type="Sprite" parent="."]
+texture = ExtResource( 3 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="screen_exited" from="VisibilityEnabler2D" to="." method="_on_VisibilityEnabler2D_screen_exited"]

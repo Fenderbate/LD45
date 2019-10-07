@@ -7,7 +7,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _input(event):
-	if event is InputEventKey and !start:
+	if (event is InputEventKey or event is InputEventMouseButton) and !start:
 		start = true
 		$AnimationPlayer.play("fade_out")
 

@@ -23,6 +23,11 @@ preload("res://sprites/Npc_7_idle.png"),
 preload("res://sprites/Npc_8_idle.png")
 ]
 
+var stand_sprites = [
+preload("res://sprites/stand_items_1.png"),
+preload("res://sprites/stand_items_2.png")
+]
+
 #--------------------------------------------------------------------#
 
 var lust = 0 setget set_lust

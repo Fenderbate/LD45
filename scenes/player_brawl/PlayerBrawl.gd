@@ -6,6 +6,8 @@ var meter = 50
 
 var speed = 4
 
+var final_bonus = 1
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass
@@ -31,9 +33,11 @@ func _input(event):
 
 func brawl_done(lost = true):
 	if lost and Global.pride > 0:
-		Global.pride -= 1
+		Global.pride -= final_bonus
+		Global.wrath += 1
 	elif !lost:
-		Global.pride += 1
+		Global.pride += final_bonus
+		Global.wrath += final_bonus
 	SignalHandler.emit_signal("player_active",true)
 	SignalHandler.emit_signal("remove_person")
 	queue_free()

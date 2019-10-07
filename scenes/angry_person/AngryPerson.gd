@@ -36,4 +36,5 @@ func _on_AngryPerson_body_entered(body):
 func _on_AngryPerson_area_entered(area):
 	if area is PlayerBrawl:
 		area.meter -= 20
+		area.final_bonus += 1
 		queue_free()

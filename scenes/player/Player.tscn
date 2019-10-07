@@ -1,16 +1,17 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Main_character_idle.png" type="Texture" id=2]
 [ext_resource path="res://scenes/player/UI.gd" type="Script" id=3]
 [ext_resource path="res://misc/fonts/font2_huge.tres" type="DynamicFont" id=4]
+[ext_resource path="res://sprites/sleep_window.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9, 4 )
 
 [sub_resource type="CapsuleShape2D" id=2]
-radius = 8.00002
-height = 16.0
+radius = 7.00001
+height = 14.0
 
 [sub_resource type="Animation" id=4]
 resource_name = "stand"
@@ -125,7 +126,7 @@ custom_fonts/font = ExtResource( 4 )
 text = "E"
 align = 1
 
-[node name="Window" type="ColorRect" parent="UI"]
+[node name="Window" type="TextureRect" parent="UI"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -135,7 +136,8 @@ margin_top = -105.0
 margin_right = 225.0
 margin_bottom = 105.0
 mouse_filter = 2
-color = Color( 0.207843, 0.254902, 0.333333, 1 )
+texture = ExtResource( 5 )
+expand = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Window"]
 anchor_right = 1.0
