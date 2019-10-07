@@ -1,10 +1,11 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://scenes/person/Person.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://sprites/Npc_2_idle.png" type="Texture" id=2]
 
-[sub_resource type="CircleShape2D" id=1]
-radius = 45.218
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.00002
+height = 14.0
 
 [node name="Person" type="Area2D"]
 linear_damp = 50.0
@@ -12,11 +13,13 @@ script = ExtResource( 1 )
 detail = "Steal Money"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, 24 )
+rotation = 1.57079
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.843137, 0.811765, 0, 1 )
 texture = ExtResource( 2 )
+hframes = 2
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 position = Vector2( -1.19209e-006, 0 )

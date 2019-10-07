@@ -2,7 +2,7 @@ extends Area2D
 
 var target = null
 
-var speed = 100
+export(float)var speed = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,7 +27,7 @@ func _on_AngryPerson_body_entered(body):
 		
 		var b = load("res://scenes/player_brawl/PlayerBrawl.tscn").instance()
 		b.global_position = target.global_position
-		get_parent().add_child(b)
+		get_parent().call_deferred("add_child",b)
 		queue_free()
 
 func _on_AngryPerson_area_entered(area):

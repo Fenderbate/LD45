@@ -1,99 +1,269 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://scenes/main/Main.gd" type="Script" id=1]
-[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/person/Person.tscn" type="PackedScene" id=3]
-[ext_resource path="res://scenes/homeless/Homeless.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/people_group/PoepleGroup.tscn" type="PackedScene" id=5]
-[ext_resource path="res://scenes/market_stand/MarketStand.tscn" type="PackedScene" id=6]
-[ext_resource path="res://scenes/lust_house/Lusthouse.tscn" type="PackedScene" id=7]
+[ext_resource path="res://sprites/sky.png" type="Texture" id=2]
+[ext_resource path="res://scenes/player/Player.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/person/Person.tscn" type="PackedScene" id=4]
+[ext_resource path="res://scenes/homeless/Homeless.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/people_group/PoepleGroup.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/market_stand/MarketStand.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/lust_house/Lusthouse.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sprites/map.png" type="Texture" id=9]
+[ext_resource path="res://misc/music/music2.wav" type="AudioStream" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 801.46, 60 )
+extents = Vector2( 1875.32, 60 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 54.2141, 658.547 )
 
+[sub_resource type="ConvexPolygonShape2D" id=3]
+points = PoolVector2Array( 0, 0, 202, 0, 202, 76, 0, 76 )
+
+[sub_resource type="ConvexPolygonShape2D" id=4]
+points = PoolVector2Array( 0, 0, 196, 0, 196, 110, 0, 110 )
+
+[sub_resource type="ConvexPolygonShape2D" id=5]
+points = PoolVector2Array( 0, 0, 185, 0, 185, 141, 0, 141 )
+
+[sub_resource type="ConvexPolygonShape2D" id=6]
+points = PoolVector2Array( 0, 0, 141, 0, 141, 141, 0, 141 )
+
+[sub_resource type="ConvexPolygonShape2D" id=7]
+points = PoolVector2Array( 0, 0, 179, 0, 179, 110, 0, 110 )
+
+[sub_resource type="TileSet" id=8]
+0/name = "wall"
+0/texture = ExtResource( 9 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 48, 201, 93 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 3 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+1/name = "shop"
+1/texture = ExtResource( 9 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 201, 31, 196, 110 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 4 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+1/z_index = 0
+2/name = "hotel"
+2/texture = ExtResource( 9 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 396, 0, 185, 141 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 5 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+2/z_index = 0
+3/name = "lusthouse"
+3/texture = ExtResource( 9 )
+3/tex_offset = Vector2( 0, 0 )
+3/modulate = Color( 1, 1, 1, 1 )
+3/region = Rect2( 581, 0, 141, 141 )
+3/tile_mode = 0
+3/occluder_offset = Vector2( 0, 0 )
+3/navigation_offset = Vector2( 0, 0 )
+3/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 6 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+3/z_index = 0
+4/name = "house"
+4/texture = ExtResource( 9 )
+4/tex_offset = Vector2( 0, 0 )
+4/modulate = Color( 1, 1, 1, 1 )
+4/region = Rect2( 722, 31, 179, 110 )
+4/tile_mode = 0
+4/occluder_offset = Vector2( 0, 0 )
+4/navigation_offset = Vector2( 0, 0 )
+4/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 7 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+4/z_index = 0
+5/name = "road"
+5/texture = ExtResource( 9 )
+5/tex_offset = Vector2( 0, 0 )
+5/modulate = Color( 1, 1, 1, 1 )
+5/region = Rect2( 100, 157, 54, 99 )
+5/tile_mode = 0
+5/occluder_offset = Vector2( 0, 0 )
+5/navigation_offset = Vector2( 0, 0 )
+5/shapes = [  ]
+5/z_index = 0
+6/name = "sidewalk_tile"
+6/texture = ExtResource( 9 )
+6/tex_offset = Vector2( 0, 0 )
+6/modulate = Color( 1, 1, 1, 1 )
+6/region = Rect2( 5, 141, 22, 14 )
+6/tile_mode = 0
+6/occluder_offset = Vector2( 0, 0 )
+6/navigation_offset = Vector2( 0, 0 )
+6/shapes = [  ]
+6/z_index = 0
+7/name = "map.png 7"
+7/texture = ExtResource( 9 )
+7/tex_offset = Vector2( 0, 0 )
+7/modulate = Color( 1, 1, 1, 1 )
+7/region = Rect2( 38, 141, 9, 14 )
+7/tile_mode = 0
+7/occluder_offset = Vector2( 0, 0 )
+7/navigation_offset = Vector2( 0, 0 )
+7/shapes = [  ]
+7/z_index = 0
+
 [node name="Main" type="YSort"]
 script = ExtResource( 1 )
 
-[node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 69, 62 )
+[node name="Sky" type="Node" parent="."]
+
+[node name="Sprite" type="Sprite" parent="Sky"]
+z_index = -10
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Sprite2" type="Sprite" parent="Sky"]
+position = Vector2( -900, 0 )
+z_index = -10
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Sprite3" type="Sprite" parent="Sky"]
+position = Vector2( 900, 0 )
+z_index = -10
+texture = ExtResource( 2 )
+centered = false
+
+[node name="Player" parent="." instance=ExtResource( 3 )]
+position = Vector2( 490, 130 )
 
 [node name="People" type="YSort" parent="."]
-editor/display_folded = true
 
-[node name="Person" parent="People" instance=ExtResource( 3 )]
-position = Vector2( 1024.7, 74.6103 )
+[node name="Person" parent="People" instance=ExtResource( 4 )]
+position = Vector2( 257, 163.784 )
 
-[node name="Person2" parent="People" instance=ExtResource( 3 )]
-position = Vector2( 1147.13, 75.9713 )
+[node name="Person2" parent="People" instance=ExtResource( 4 )]
+position = Vector2( 309.167, 198.161 )
 
-[node name="Person3" parent="People" instance=ExtResource( 3 )]
-position = Vector2( 1269.57, 75.9713 )
+[node name="Person3" parent="People" instance=ExtResource( 4 )]
+position = Vector2( 366.178, 157 )
 
-[node name="Person4" parent="People" instance=ExtResource( 3 )]
-position = Vector2( 1387.92, 77.3313 )
+[node name="Person4" parent="People" instance=ExtResource( 4 )]
+position = Vector2( 409.167, 191.161 )
 
-[node name="Homeless" parent="People" instance=ExtResource( 4 )]
-position = Vector2( 728.137, 250.098 )
+[node name="Homeless" parent="People" instance=ExtResource( 5 )]
+position = Vector2( 20.8404, 110.851 )
 
-[node name="Homeless2" parent="People" instance=ExtResource( 4 )]
-position = Vector2( 832.911, 250.098 )
+[node name="Homeless2" parent="People" instance=ExtResource( 5 )]
+position = Vector2( 53.9605, 113.97 )
 
-[node name="Homeless3" parent="People" instance=ExtResource( 4 )]
-position = Vector2( 932.911, 249.743 )
+[node name="Homeless3" parent="People" instance=ExtResource( 5 )]
+position = Vector2( 89.8325, 106.645 )
 
-[node name="Homeless4" parent="People" instance=ExtResource( 4 )]
-position = Vector2( 1032.91, 250.098 )
+[node name="Homeless4" parent="People" instance=ExtResource( 5 )]
+position = Vector2( 125.705, 116.964 )
 
-[node name="Homeless5" parent="People" instance=ExtResource( 4 )]
-position = Vector2( 1132.91, 249.743 )
+[node name="Homeless5" parent="People" instance=ExtResource( 5 )]
+position = Vector2( 160.201, 107.842 )
 
-[node name="PoepleGroup" parent="People" instance=ExtResource( 5 )]
-position = Vector2( 1252.91, 249.743 )
+[node name="PoepleGroup" parent="People" instance=ExtResource( 6 )]
+position = Vector2( 537, 189 )
 
-[node name="PoepleGroup2" parent="People" instance=ExtResource( 5 )]
-position = Vector2( 1382.91, 249.743 )
+[node name="PoepleGroup2" parent="People" instance=ExtResource( 6 )]
+position = Vector2( 627, 198 )
 
-[node name="PoepleGroup3" parent="People" instance=ExtResource( 5 )]
-position = Vector2( 1382.91, 359.743 )
+[node name="PoepleGroup3" parent="People" instance=ExtResource( 6 )]
+position = Vector2( 728.001, 196.743 )
 
-[node name="PoepleGroup4" parent="People" instance=ExtResource( 5 )]
-position = Vector2( 1252.91, 359.743 )
+[node name="PoepleGroup4" parent="People" instance=ExtResource( 6 )]
+position = Vector2( 834.001, 192 )
 
 [node name="Buildings" type="YSort" parent="."]
 editor/display_folded = true
 
-[node name="MarketStand" parent="Buildings" instance=ExtResource( 6 )]
-position = Vector2( 212.218, 20.4056 )
+[node name="MarketStand" parent="Buildings" instance=ExtResource( 7 )]
+position = Vector2( 240, 110 )
 
-[node name="MarketStand2" parent="Buildings" instance=ExtResource( 6 )]
-position = Vector2( 340, 20 )
+[node name="MarketStand2" parent="Buildings" instance=ExtResource( 7 )]
+position = Vector2( 360, 110 )
 
-[node name="MarketStand3" parent="Buildings" instance=ExtResource( 6 )]
-position = Vector2( 470, 20.4056 )
+[node name="MarketStand3" parent="Buildings" instance=ExtResource( 7 )]
+position = Vector2( 2280, 260.406 )
 
-[node name="Lusthouse" parent="Buildings" instance=ExtResource( 7 )]
-position = Vector2( 574.221, 40.4056 )
+[node name="MarketStand4" parent="Buildings" instance=ExtResource( 7 )]
+position = Vector2( 2520, 260.406 )
 
-[node name="Lusthouse2" parent="Buildings" instance=ExtResource( 7 )]
-position = Vector2( 660, 40.4056 )
+[node name="Lusthouse" parent="Buildings" instance=ExtResource( 8 )]
+position = Vector2( 651, 140 )
 
-[node name="Lusthouse3" parent="Buildings" instance=ExtResource( 7 )]
-position = Vector2( 750, 40.4056 )
+[node name="Lusthouse2" parent="Buildings" instance=ExtResource( 8 )]
+position = Vector2( 3100, 281.743 )
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+position = Vector2( -110, 320 )
+color = Color( 0.172549, 0.172549, 0.172549, 1 )
+polygon = PoolVector2Array( -71, -8, -70, 230, 1270, 230, 1270, -10 )
+
+[node name="Polygon2D2" type="Polygon2D" parent="."]
+position = Vector2( -20, 142 )
+color = Color( 0.172549, 0.172549, 0.172549, 1 )
+polygon = PoolVector2Array( 20, -70, 20, -1, 20, 93, -122, 93, -120, -70 )
 
 [node name="Bounds" type="StaticBody2D" parent="."]
+position = Vector2( -3, 514 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 800, -58 )
+visible = false
+position = Vector2( 1870, -464 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( 800.911, 493 )
+position = Vector2( 1872, -221 )
 shape = SubResource( 1 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Bounds"]
-position = Vector2( -50, 390 )
+position = Vector2( -50, -154 )
 shape = SubResource( 2 )
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource( 8 )
+cell_size = Vector2( 1, 1 )
+format = 1
+tile_data = PoolIntArray( 396, 2, 0, 581, 3, 0, 2031817, 1, 0, 2032338, 4, 0, 3145728, 0, 0, 3146629, 0, 0, 9306107, 6, 0, 9240592, 6, 0, 9240613, 6, 0, 9240634, 6, 0, 9240655, 6, 0, 9240676, 6, 0, 9240697, 6, 0, 9240718, 6, 0, 9240739, 6, 0, 9240760, 6, 0, 9240781, 6, 0, 9240802, 6, 0, 9240823, 6, 0, 9240844, 6, 0, 9240865, 6, 0, 9240886, 6, 0, 9240907, 6, 0, 9240928, 6, 0, 9240949, 6, 0, 9240970, 6, 0, 9240991, 6, 0, 9241012, 6, 0, 9241033, 6, 0, 9241054, 6, 0, 9241075, 6, 0, 9241096, 6, 0, 9241117, 6, 0, 9241138, 6, 0, 9241159, 6, 0, 9241180, 6, 0, 9241201, 6, 0, 9241222, 6, 0, 9241243, 6, 0, 9241264, 6, 0, 9241285, 6, 0, 9241306, 6, 0, 9241327, 6, 0, 9241348, 6, 0, 9241369, 6, 0, 9241390, 6, 0, 9241411, 6, 0, 9241432, 6, 0, 9241453, 6, 0, 9241474, 6, 0, 9241495, 6, 0, 9241516, 6, 0, 9241537, 6, 0, 9241558, 6, 0, 9241579, 6, 0, 9241600, 6, 0, 9241621, 6, 0, 9241642, 6, 0, 9241663, 6, 0, 9241684, 6, 0, 10158076, 7, 0, 10092549, 6, 0, 10092570, 6, 0, 10092591, 6, 0, 10092612, 6, 0, 10092633, 6, 0, 10092654, 6, 0, 10092675, 6, 0, 10092696, 6, 0, 10092717, 6, 0, 10092738, 6, 0, 10092759, 6, 0, 10092780, 6, 0, 10092801, 6, 0, 10092822, 6, 0, 10092843, 6, 0, 10092864, 6, 0, 10092885, 6, 0, 10092906, 6, 0, 10092927, 6, 0, 10092948, 6, 0, 10092969, 6, 0, 10092990, 6, 0, 10093011, 6, 0, 10093032, 6, 0, 10093053, 6, 0, 10093074, 6, 0, 10093095, 6, 0, 10093116, 6, 0, 10093137, 6, 0, 10093158, 6, 0, 10093179, 6, 0, 10093200, 6, 0, 10093221, 6, 0, 10093242, 6, 0, 10093263, 6, 0, 10093284, 6, 0, 10093305, 6, 0, 10093326, 6, 0, 10093347, 6, 0, 10093368, 6, 0, 10093389, 6, 0, 10093410, 6, 0, 10093431, 6, 0, 10093452, 6, 0, 10093473, 6, 0, 10093494, 6, 0, 10093515, 6, 0, 10093536, 6, 0, 10093557, 6, 0, 10093578, 6, 0, 10093599, 6, 0, 10093620, 6, 0, 10093641, 6, 0, 11010043, 6, 0, 10944528, 6, 0, 10944549, 6, 0, 10944570, 6, 0, 10944591, 6, 0, 10944612, 6, 0, 10944633, 6, 0, 10944654, 6, 0, 10944675, 6, 0, 10944696, 6, 0, 10944717, 6, 0, 10944738, 6, 0, 10944759, 6, 0, 10944780, 6, 0, 10944801, 6, 0, 10944822, 6, 0, 10944843, 6, 0, 10944864, 6, 0, 10944885, 6, 0, 10944906, 6, 0, 10944927, 6, 0, 10944948, 6, 0, 10944969, 6, 0, 10944990, 6, 0, 10945011, 6, 0, 10945032, 6, 0, 10945053, 6, 0, 10945074, 6, 0, 10945095, 6, 0, 10945116, 6, 0, 10945137, 6, 0, 10945158, 6, 0, 10945179, 6, 0, 10945200, 6, 0, 10945221, 6, 0, 10945242, 6, 0, 10945263, 6, 0, 10945284, 6, 0, 10945305, 6, 0, 10945326, 6, 0, 10945347, 6, 0, 10945368, 6, 0, 10945389, 6, 0, 10945410, 6, 0, 10945431, 6, 0, 10945452, 6, 0, 10945473, 6, 0, 10945494, 6, 0, 10945515, 6, 0, 10945536, 6, 0, 10945557, 6, 0, 10945578, 6, 0, 10945599, 6, 0, 10945620, 6, 0, 11862012, 7, 0, 11796485, 6, 0, 11796506, 6, 0, 11796527, 6, 0, 11796548, 6, 0, 11796569, 6, 0, 11796590, 6, 0, 11796611, 6, 0, 11796632, 6, 0, 11796653, 6, 0, 11796674, 6, 0, 11796695, 6, 0, 11796716, 6, 0, 11796737, 6, 0, 11796758, 6, 0, 11796779, 6, 0, 11796800, 6, 0, 11796821, 6, 0, 11796842, 6, 0, 11796863, 6, 0, 11796884, 6, 0, 11796905, 6, 0, 11796926, 6, 0, 11796947, 6, 0, 11796968, 6, 0, 11796989, 6, 0, 11797010, 6, 0, 11797031, 6, 0, 11797052, 6, 0, 11797073, 6, 0, 11797094, 6, 0, 11797115, 6, 0, 11797136, 6, 0, 11797157, 6, 0, 11797178, 6, 0, 11797199, 6, 0, 11797220, 6, 0, 11797241, 6, 0, 11797262, 6, 0, 11797283, 6, 0, 11797304, 6, 0, 11797325, 6, 0, 11797346, 6, 0, 11797367, 6, 0, 11797388, 6, 0, 11797409, 6, 0, 11797430, 6, 0, 11797451, 6, 0, 11797472, 6, 0, 11797493, 6, 0, 11797514, 6, 0, 11797535, 6, 0, 11797556, 6, 0, 11797577, 6, 0, 12713979, 6, 0, 12648464, 6, 0, 12648485, 6, 0, 12648506, 6, 0, 12648527, 6, 0, 12648548, 6, 0, 12648569, 6, 0, 12648590, 6, 0, 12648611, 6, 0, 12648632, 6, 0, 12648653, 6, 0, 12648674, 6, 0, 12648695, 6, 0, 12648716, 6, 0, 12648737, 6, 0, 12648758, 6, 0, 12648779, 6, 0, 12648800, 6, 0, 12648821, 6, 0, 12648842, 6, 0, 12648863, 6, 0, 12648884, 6, 0, 12648905, 6, 0, 12648926, 6, 0, 12648947, 6, 0, 12648968, 6, 0, 12648989, 6, 0, 12649010, 6, 0, 12649031, 6, 0, 12649052, 6, 0, 12649073, 6, 0, 12649094, 6, 0, 12649115, 6, 0, 12649136, 6, 0, 12649157, 6, 0, 12649178, 6, 0, 12649199, 6, 0, 12649220, 6, 0, 12649241, 6, 0, 12649262, 6, 0, 12649283, 6, 0, 12649304, 6, 0, 12649325, 6, 0, 12649346, 6, 0, 12649367, 6, 0, 12649388, 6, 0, 12649409, 6, 0, 12649430, 6, 0, 12649451, 6, 0, 12649472, 6, 0, 12649493, 6, 0, 12649514, 6, 0, 12649535, 6, 0, 12649556, 6, 0, 13565948, 7, 0, 13500421, 6, 0, 13500442, 6, 0, 13500463, 6, 0, 13500484, 6, 0, 13500505, 6, 0, 13500526, 6, 0, 13500547, 6, 0, 13500568, 6, 0, 13500589, 6, 0, 13500610, 6, 0, 13500631, 6, 0, 13500652, 6, 0, 13500673, 6, 0, 13500694, 6, 0, 13500715, 6, 0, 13500736, 6, 0, 13500757, 6, 0, 13500778, 6, 0, 13500799, 6, 0, 13500820, 6, 0, 13500841, 6, 0, 13500862, 6, 0, 13500883, 6, 0, 13500904, 6, 0, 13500925, 6, 0, 13500946, 6, 0, 13500967, 6, 0, 13500988, 6, 0, 13501009, 6, 0, 13501030, 6, 0, 13501051, 6, 0, 13501072, 6, 0, 13501093, 6, 0, 13501114, 6, 0, 13501135, 6, 0, 13501156, 6, 0, 13501177, 6, 0, 13501198, 6, 0, 13501219, 6, 0, 13501240, 6, 0, 13501261, 6, 0, 13501282, 6, 0, 13501303, 6, 0, 13501324, 6, 0, 13501345, 6, 0, 13501366, 6, 0, 13501387, 6, 0, 13501408, 6, 0, 13501429, 6, 0, 13501450, 6, 0, 13501471, 6, 0, 13501492, 6, 0, 13501513, 6, 0, 14417915, 6, 0, 14352400, 6, 0, 14352421, 6, 0, 14352442, 6, 0, 14352463, 6, 0, 14352484, 6, 0, 14352505, 6, 0, 14352506, 6, 0, 14352527, 6, 0, 14352548, 6, 0, 14352569, 6, 0, 14352590, 6, 0, 14352611, 6, 0, 14352632, 6, 0, 14352653, 6, 0, 14352674, 6, 0, 14352695, 6, 0, 14352716, 6, 0, 14352737, 6, 0, 14352758, 6, 0, 14352779, 6, 0, 14352800, 6, 0, 14352821, 6, 0, 14352842, 6, 0, 14352863, 6, 0, 14352884, 6, 0, 14352905, 6, 0, 14352926, 6, 0, 14352947, 6, 0, 14352968, 6, 0, 14352989, 6, 0, 14353010, 6, 0, 14353031, 6, 0, 14353052, 6, 0, 14353073, 6, 0, 14353094, 6, 0, 14353115, 6, 0, 14353136, 6, 0, 14353157, 6, 0, 14353178, 6, 0, 14353199, 6, 0, 14353220, 6, 0, 14353241, 6, 0, 14353262, 6, 0, 14353283, 6, 0, 14353304, 6, 0, 14353325, 6, 0, 14353346, 6, 0, 14353367, 6, 0, 14353388, 6, 0, 14353409, 6, 0, 14353430, 6, 0, 14353451, 6, 0, 14353472, 6, 0, 14353493, 6, 0, 15335212, 5, 0, 15335266, 5, 0, 15335320, 5, 0, 15335374, 5, 0, 15269888, 5, 0, 15269942, 5, 0, 15269996, 5, 0, 15270050, 5, 0, 15270104, 5, 0, 15270158, 5, 0, 15270212, 5, 0, 15270266, 5, 0, 15270320, 5, 0, 15270374, 5, 0, 15270428, 5, 0, 15270429, 5, 0, 15270483, 5, 0, 15270537, 5, 0, 15270591, 5, 0, 15270645, 5, 0, 15270699, 5, 0, 15270753, 5, 0, 15270807, 5, 0, 15270861, 5, 0, 15270915, 5, 0 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )
+autoplay = true
 

@@ -11,37 +11,48 @@ var floater = preload("res://scenes/floating_text/FloatingText.tscn")
 
 var last_floater_position = Vector2()
 
+var people_sprites = [
+#preload("res://sprites/Npc_1_idle.png"),
+preload("res://sprites/Npc_2_idle.png"),
+preload("res://sprites/Npc_3_idle.png"),
+preload("res://sprites/Npc_4_idle.png"),
+preload("res://sprites/Npc_5_idle.png"),
+preload("res://sprites/Npc_6_idle.png"),
+preload("res://sprites/Npc_7_idle.png"),
+preload("res://sprites/Npc_8_idle.png")
+]
+
 #--------------------------------------------------------------------#
 
 var lust = 0 setget set_lust
 var max_lust = 10
 func set_lust(value):
-	lust = generic_set_get(value,lust,max_lust,"Lust+" if value >= pride else "Lust-")
+	lust = generic_set_get(value,lust,max_lust,"Lust+" if value >= lust else "Lust-")
 
 var gluttony = 0setget set_gluttony
 var max_gluttony = 10
 func set_gluttony(value):
-	gluttony = generic_set_get(value,gluttony,max_gluttony,"Gluttony+" if value >= pride else "Gluttony-")
+	gluttony = generic_set_get(value,gluttony,max_gluttony,"Gluttony+" if value >= gluttony else "Gluttony-")
 
 var greed = 0 setget set_greed
 var max_greed = 10
 func set_greed(value):
-	greed = generic_set_get(value,greed,max_greed,"Greed+" if value >= pride else "Greed-")
+	greed = generic_set_get(value,greed,max_greed,"Greed+" if value >= greed else "Greed-")
 
 var sloth = 0 setget set_sloth
 var max_sloth = 1
 func set_sloth(value):
-	sloth = generic_set_get(value,sloth,max_sloth,"Sloth+" if value >= pride else "Sloth-")
+	sloth = generic_set_get(value,sloth,max_sloth,"Sloth+" if value >= sloth else "Sloth-")
 
 var wrath = 0 setget set_wrath
 var max_wrath = 10
 func set_wrath(value):
-	wrath = generic_set_get(value,wrath,max_wrath,"Wrath+" if value >= pride else "Wrath-")
+	wrath = generic_set_get(value,wrath,max_wrath,"Wrath+" if value >= wrath else "Wrath-")
 
 var envy = 0 setget set_envy
 var max_envy = 10
 func set_envy(value):
-	envy = generic_set_get(value,envy,max_envy,"Envy+" if value >= pride else "Envy-")
+	envy = generic_set_get(value,envy,max_envy,"Envy+" if value >= envy else "Envy-")
 
 var pride = 0 setget set_pride
 var max_pride = 10
@@ -77,7 +88,7 @@ func spawn_floater(target, text = ""):
 	var f = floater.instance()
 	f.text = text
 	randomize()
-	f.global_position = target.global_position + (last_floater_position + (50 * Vector2(rand_range(-1,1),rand_range(-1,1))))
+	f.global_position = target.global_position + (last_floater_position + (10 * Vector2(rand_range(-1,1),rand_range(-1,1))))
 	target.get_parent().call_deferred("add_child",f)
 
 
@@ -94,7 +105,12 @@ func no_sins():
 
 func select_angry_person():
 	randomize()
+	
+	if people.size() <= 0:
+		return
+	
 	var index = randi() % people.size()
+	
 	if people[index].get_ref():
 		people[index].get_ref().get_angry()
 	else:

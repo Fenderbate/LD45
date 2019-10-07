@@ -14,7 +14,7 @@ func _ready():
 #	pass
 
 func on_window_show_pressed():
-	$Window.show()
+	$Window.visible = !$Window.visible
 
 func _on_Yes_button_down():
 	print("go to ending screen")

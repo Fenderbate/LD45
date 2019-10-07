@@ -57,13 +57,13 @@ func _input(event):
 	
 
 func update_meters():
-	$Camera2D/CanvasLayer/UI/SinContainer/Lust.value = float(Global.lust) / Global.max_lust
-	$Camera2D/CanvasLayer/UI/SinContainer/Gluttony.value = float(Global.gluttony) / Global.max_gluttony
-	$Camera2D/CanvasLayer/UI/SinContainer/Greed.value = float(Global.greed) / Global.max_greed
-	$Camera2D/CanvasLayer/UI/SinContainer/Sloth.value = float(Global.sloth) / Global.max_sloth
-	$Camera2D/CanvasLayer/UI/SinContainer/Wrath.value = float(Global.wrath) / Global.max_wrath
-	$Camera2D/CanvasLayer/UI/SinContainer/Envy.value = float(Global.envy) / Global.max_envy
-	$Camera2D/CanvasLayer/UI/SinContainer/Pride.value = float(Global.pride) / Global.max_pride
+	$Camera2D/CanvasLayer/UI/SinContainer/Lust.value =1.0 - float(Global.lust) / Global.max_lust
+	$Camera2D/CanvasLayer/UI/SinContainer/Gluttony.value = 1.0 - float(Global.gluttony) / Global.max_gluttony
+	$Camera2D/CanvasLayer/UI/SinContainer/Greed.value = 1.0 - float(Global.greed) / Global.max_greed
+	$Camera2D/CanvasLayer/UI/SinContainer/Sloth.value = 1.0 - float(Global.sloth) / Global.max_sloth
+	$Camera2D/CanvasLayer/UI/SinContainer/Wrath.value = 1.0 - float(Global.wrath) / Global.max_wrath
+	$Camera2D/CanvasLayer/UI/SinContainer/Envy.value = 1.0 - float(Global.envy) / Global.max_envy
+	$Camera2D/CanvasLayer/UI/SinContainer/Pride.value = 1.0 - float(Global.pride) / Global.max_pride
 
 func _on_Left_button_down():
 	if sin_page > 0:

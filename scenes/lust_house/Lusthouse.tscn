@@ -3,7 +3,7 @@
 [ext_resource path="res://scenes/lust_house/Lusthouse.gd" type="Script" id=1]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 30.079, 20 )
+extents = Vector2( 30.079, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 30, 60 )
@@ -17,7 +17,7 @@ color = Color( 0.854902, 0.145098, 1, 1 )
 polygon = PoolVector2Array( -30, 0, 30, 0, 30, -120, -30, -120 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, 20 )
+position = Vector2( 0, 10 )
 shape = SubResource( 1 )
 
 [node name="Timer" type="Timer" parent="."]
@@ -28,5 +28,6 @@ one_shot = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
 position = Vector2( 0, -60 )
 shape = SubResource( 2 )
+disabled = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]

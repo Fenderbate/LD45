@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/player_brawl/PlayerBrawl.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
+[ext_resource path="res://sprites/fight_cloud.png" type="Texture" id=2]
 [ext_resource path="res://misc/fonts/font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://sprites/progress_bar_placeholder.png" type="Texture" id=4]
 
@@ -20,6 +20,18 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 360.0 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5, 1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 0, 1 ]
 }
 
 [sub_resource type="Animation" id=2]
@@ -69,9 +81,9 @@ radius = 39.4026
 script = ExtResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-modulate = Color( 0.239216, 0.239216, 0.239216, 1 )
-rotation = 1.74846e-007
+rotation = 0.0232794
 texture = ExtResource( 2 )
+hframes = 2
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "roll"

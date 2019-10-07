@@ -1,10 +1,12 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/followcam/FollowCam.gd" type="Script" id=1]
-[ext_resource path="res://icon.png" type="Texture" id=2]
-[ext_resource path="res://misc/fonts/font.tres" type="DynamicFont" id=3]
+[ext_resource path="res://sprites/sins.png" type="Texture" id=2]
+[ext_resource path="res://sprites/cover.png" type="Texture" id=3]
+[ext_resource path="res://misc/fonts/font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://icon.png" type="Texture" id=5]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "fade_in"
 length = 0.5
 tracks/0/type = "value"
@@ -20,8 +22,7 @@ tracks/0/keys = {
 "values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "fade_out"
+[sub_resource type="Animation" id=2]
 length = 0.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("Cover:color")
@@ -74,7 +75,7 @@ script = ExtResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
-zoom = Vector2( 0.8, 0.8 )
+zoom = Vector2( 0.3, 0.3 )
 drag_margin_left = 0.0
 drag_margin_top = 0.0
 drag_margin_right = 0.0
@@ -84,14 +85,19 @@ drag_margin_bottom = 0.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Camera2D/CanvasLayer"]
 autoplay = "fade_in"
-anims/fade_in = SubResource( 2 )
-anims/fade_out = SubResource( 1 )
+anims/fade_in = SubResource( 1 )
+anims/fade_out = SubResource( 2 )
 
 [node name="Cover" type="ColorRect" parent="Camera2D/CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-color = Color( 0, 0, 0, 1 )
+color = Color( 0, 0, 0, 0 )
+
+[node name="Sprite" type="Sprite" parent="Camera2D/CanvasLayer"]
+position = Vector2( 512, 720 )
+scale = Vector2( 3, 3 )
+texture = ExtResource( 2 )
 
 [node name="UI" type="Control" parent="Camera2D/CanvasLayer"]
 anchor_right = 1.0
@@ -99,98 +105,114 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="SinContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/UI"]
-anchor_left = 0.5
 anchor_top = 1.0
-anchor_right = 0.5
+anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -367.5
-margin_top = -100.0
-margin_right = 367.5
+margin_left = -256.0
+margin_top = -96.0
+margin_right = -256.0
+margin_bottom = -32.0
+rect_min_size = Vector2( 0, 64 )
+rect_scale = Vector2( 1.5, 1.5 )
 mouse_filter = 2
 alignment = 1
 
 [node name="Lust" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
-margin_left = 5.0
-margin_right = 105.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+self_modulate = Color( 0, 0, 0, 0.839216 )
+margin_left = 276.0
+margin_right = 340.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
 max_value = 1.0
 step = 0.01
+value = 1.0
 allow_greater = true
-texture_progress = ExtResource( 2 )
-fill_mode = 3
+texture_progress = ExtResource( 3 )
+fill_mode = 2
 nine_patch_stretch = true
 
 [node name="Gluttony" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
-margin_left = 109.0
-margin_right = 209.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+self_modulate = Color( 0, 0, 0, 0.839216 )
+margin_left = 344.0
+margin_right = 408.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
 max_value = 1.0
 step = 0.01
+value = 1.0
 allow_greater = true
-texture_progress = ExtResource( 2 )
-fill_mode = 3
-nine_patch_stretch = true
-
-[node name="Greed" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
-margin_left = 213.0
-margin_right = 313.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
-max_value = 1.0
-step = 0.01
-allow_greater = true
-texture_progress = ExtResource( 2 )
-fill_mode = 3
+texture_progress = ExtResource( 3 )
+fill_mode = 2
 nine_patch_stretch = true
 
 [node name="Sloth" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
-margin_left = 317.0
-margin_right = 417.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+self_modulate = Color( 0, 0, 0, 0.839216 )
+margin_left = 412.0
+margin_right = 476.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
 max_value = 1.0
 step = 0.01
+value = 1.0
 allow_greater = true
-texture_progress = ExtResource( 2 )
-fill_mode = 3
+texture_progress = ExtResource( 3 )
+fill_mode = 2
 nine_patch_stretch = true
 
-[node name="Wrath" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
-margin_left = 421.0
-margin_right = 521.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+[node name="Greed" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
+self_modulate = Color( 0, 0, 0, 0.839216 )
+margin_left = 480.0
+margin_right = 544.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
 max_value = 1.0
 step = 0.01
+value = 1.0
 allow_greater = true
-texture_progress = ExtResource( 2 )
-fill_mode = 3
+texture_progress = ExtResource( 3 )
+fill_mode = 2
 nine_patch_stretch = true
 
 [node name="Envy" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
-margin_left = 525.0
-margin_right = 625.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+self_modulate = Color( 0, 0, 0, 0.839216 )
+margin_left = 548.0
+margin_right = 612.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
 max_value = 1.0
 step = 0.01
+value = 1.0
 allow_greater = true
-texture_progress = ExtResource( 2 )
-fill_mode = 3
+texture_progress = ExtResource( 3 )
+fill_mode = 2
 nine_patch_stretch = true
 
 [node name="Pride" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
-margin_left = 629.0
-margin_right = 729.0
-margin_bottom = 100.0
-rect_min_size = Vector2( 100, 100 )
+self_modulate = Color( 0, 0, 0, 0.839216 )
+margin_left = 616.0
+margin_right = 680.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
 max_value = 1.0
 step = 0.01
+value = 1.0
 allow_greater = true
-texture_progress = ExtResource( 2 )
-fill_mode = 3
+texture_progress = ExtResource( 3 )
+fill_mode = 2
+nine_patch_stretch = true
+
+[node name="Wrath" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
+self_modulate = Color( 0, 0, 0, 0.839216 )
+margin_left = 684.0
+margin_right = 748.0
+margin_bottom = 64.0
+rect_min_size = Vector2( 64, 64 )
+max_value = 1.0
+step = 0.01
+value = 1.0
+allow_greater = true
+texture_progress = ExtResource( 3 )
+fill_mode = 2
 nine_patch_stretch = true
 
 [node name="SinDescription" type="TextureRect" parent="Camera2D/CanvasLayer/UI"]
@@ -234,7 +256,7 @@ scroll_horizontal_enabled = false
 margin_right = 484.0
 margin_bottom = 1273.0
 rect_min_size = Vector2( 484, 0 )
-custom_fonts/font = ExtResource( 3 )
+custom_fonts/font = ExtResource( 4 )
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum porttitor tortor, sed dignissim leo mattis ut. Integer orci lorem, tincidunt vitae diam non, molestie ultrices justo. Duis eu venenatis eros, in tempus magna. Nullam ullamcorper, enim eu laoreet imperdiet, eros tortor pharetra eros, eu sodales nibh mauris a velit. Vestibulum mollis enim sed blandit efficitur. Sed dolor turpis, lobortis eu volutpat in, dignissim ac magna. Curabitur maximus leo eget purus ullamcorper, vel vestibulum nisi ornare. In et tortor vitae nisl gravida condimentum eu eu augue. Sed quis nibh ut turpis ultricies porta. Nulla facilisis vestibulum sagittis. Suspendisse vitae pulvinar dolor. Ut sed bibendum ligula. Morbi cursus mi diam. Fusce aliquam ultrices dapibus. Nulla id turpis quis nulla euismod fringilla a et libero. Mauris interdum neque eu accumsan fringilla."
 valign = 1
 autowrap = true
@@ -252,7 +274,7 @@ margin_left = 94.0
 margin_right = 158.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 50, 0 )
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 5 )
 
 [node name="TextureButton3" type="Control" parent="Camera2D/CanvasLayer/UI/SinDescription/Controls"]
 margin_left = 162.0
@@ -265,7 +287,7 @@ margin_left = 366.0
 margin_right = 430.0
 margin_bottom = 64.0
 rect_min_size = Vector2( 50, 0 )
-texture_normal = ExtResource( 2 )
+texture_normal = ExtResource( 5 )
 
 [node name="DescriptionAP" type="AnimationPlayer" parent="Camera2D/CanvasLayer/UI/SinDescription"]
 anims/tablet_down = SubResource( 3 )
