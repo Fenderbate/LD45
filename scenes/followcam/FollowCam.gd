@@ -8,9 +8,9 @@ var sin_decriptions = [
 "Gluttony\n\nThis sin is related to unnecessary overconsumption of food.",
 "Greed\n\nThis sin is related to one's desire of posessing things.",
 "Sloth\n\nThis sin is related to one's self loathing and laziness.",
-"Wrath\n\nThis sin is related to the enjoyment of violence.",
-"Envy\n\nThis sin is related to one's enjoyment of the suffering of others.",
-"Pride\n\nThis sin is related to one's belief of being greater and better than others."
+"Envy\n\nThis sin is related to one's enjoyment gained from the suffering of others.",
+"Pride\n\nThis sin is related to one's belief of being greater and better than others.",
+"Wrath\n\nThis sin is related to the enjoyment of violence."
 ]
 var sin_page = 0
 
@@ -33,7 +33,7 @@ func _physics_process(delta):
 		
 		global_position += (target.global_position - global_position) * delta * follow_delay
 		
-	$Camera2D/CanvasLayer/UI/SinDescription/ScrollContainer/DescriptionLabel.text = sin_decriptions[sin_page]
+	
 	
 	update_meters()
 	
@@ -43,6 +43,10 @@ func _input(event):
 			sin_page -= 1
 		elif event.scancode == KEY_RIGHT and sin_page < sin_decriptions.size() - 1:
 			sin_page += 1
+		
+		$Camera2D/CanvasLayer/UI/SinDescription/ScrollContainer/DescriptionLabel.text = sin_decriptions[sin_page]
+		$Camera2D/CanvasLayer/UI/SinDescription/Icon.texture.region = Rect2(34 * sin_page,0,34,32)
+		
 		if event.scancode == KEY_E:
 			if !tablet:
 				$Camera2D/CanvasLayer/UI/SinDescription/DescriptionAP.play("tablet_up")

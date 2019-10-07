@@ -1,9 +1,9 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/followcam/FollowCam.gd" type="Script" id=1]
 [ext_resource path="res://sprites/sins.png" type="Texture" id=2]
 [ext_resource path="res://sprites/cover.png" type="Texture" id=3]
-[ext_resource path="res://misc/fonts/font.tres" type="DynamicFont" id=4]
+[ext_resource path="res://misc/fonts/font2_huge.tres" type="DynamicFont" id=4]
 [ext_resource path="res://icon.png" type="Texture" id=5]
 
 [sub_resource type="Animation" id=1]
@@ -69,6 +69,10 @@ tracks/0/keys = {
 "values": [ Vector2( 250, 800 ), Vector2( 250, 44 ) ]
 }
 
+[sub_resource type="AtlasTexture" id=5]
+atlas = ExtResource( 2 )
+region = Rect2( 0, 0, 34, 32 )
+
 [node name="FollowCam" type="Position2D"]
 position = Vector2( 512, 384 )
 script = ExtResource( 1 )
@@ -105,6 +109,7 @@ anchor_bottom = 1.0
 mouse_filter = 2
 
 [node name="SinContainer" type="HBoxContainer" parent="Camera2D/CanvasLayer/UI"]
+editor/display_folded = true
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -145,7 +150,7 @@ texture_progress = ExtResource( 3 )
 fill_mode = 2
 nine_patch_stretch = true
 
-[node name="Sloth" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
+[node name="Greed" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
 self_modulate = Color( 0, 0, 0, 0.839216 )
 margin_left = 412.0
 margin_right = 476.0
@@ -159,7 +164,7 @@ texture_progress = ExtResource( 3 )
 fill_mode = 2
 nine_patch_stretch = true
 
-[node name="Greed" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
+[node name="Sloth" type="TextureProgress" parent="Camera2D/CanvasLayer/UI/SinContainer"]
 self_modulate = Color( 0, 0, 0, 0.839216 )
 margin_left = 480.0
 margin_right = 544.0
@@ -243,7 +248,6 @@ mouse_filter = 2
 color = Color( 0.168627, 0.243137, 0.282353, 1 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Camera2D/CanvasLayer/UI/SinDescription"]
-editor/display_folded = true
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
@@ -254,7 +258,7 @@ scroll_horizontal_enabled = false
 
 [node name="DescriptionLabel" type="Label" parent="Camera2D/CanvasLayer/UI/SinDescription/ScrollContainer"]
 margin_right = 484.0
-margin_bottom = 1273.0
+margin_bottom = 1272.0
 rect_min_size = Vector2( 484, 0 )
 custom_fonts/font = ExtResource( 4 )
 text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vestibulum porttitor tortor, sed dignissim leo mattis ut. Integer orci lorem, tincidunt vitae diam non, molestie ultrices justo. Duis eu venenatis eros, in tempus magna. Nullam ullamcorper, enim eu laoreet imperdiet, eros tortor pharetra eros, eu sodales nibh mauris a velit. Vestibulum mollis enim sed blandit efficitur. Sed dolor turpis, lobortis eu volutpat in, dignissim ac magna. Curabitur maximus leo eget purus ullamcorper, vel vestibulum nisi ornare. In et tortor vitae nisl gravida condimentum eu eu augue. Sed quis nibh ut turpis ultricies porta. Nulla facilisis vestibulum sagittis. Suspendisse vitae pulvinar dolor. Ut sed bibendum ligula. Morbi cursus mi diam. Fusce aliquam ultrices dapibus. Nulla id turpis quis nulla euismod fringilla a et libero. Mauris interdum neque eu accumsan fringilla."
@@ -292,6 +296,15 @@ texture_normal = ExtResource( 5 )
 [node name="DescriptionAP" type="AnimationPlayer" parent="Camera2D/CanvasLayer/UI/SinDescription"]
 anims/tablet_down = SubResource( 3 )
 anims/tablet_up = SubResource( 4 )
+
+[node name="Icon" type="TextureRect" parent="Camera2D/CanvasLayer/UI/SinDescription"]
+margin_left = 399.0
+margin_top = 16.0
+margin_right = 499.0
+margin_bottom = 116.0
+rect_min_size = Vector2( 100, 100 )
+texture = SubResource( 5 )
+expand = true
 
 [connection signal="animation_finished" from="Camera2D/CanvasLayer/AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="button_down" from="Camera2D/CanvasLayer/UI/SinDescription/Controls/Left" to="." method="_on_Left_button_down"]

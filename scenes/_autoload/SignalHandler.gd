@@ -10,6 +10,9 @@ signal request_presence
 signal signal_presence(object_present)
 signal player_did_bad
 
+signal remove_person
+signal remove_group
+
 func _ready():
 	pass 
 

@@ -7,6 +7,7 @@ var people = []
 
 var floater = preload("res://scenes/floating_text/FloatingText.tscn")
 
+
 #--------------------------------------------------------------------#
 
 var last_floater_position = Vector2()

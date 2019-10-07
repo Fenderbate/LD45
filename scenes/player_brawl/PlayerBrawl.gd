@@ -35,4 +35,5 @@ func brawl_done(lost = true):
 	elif !lost:
 		Global.pride += 1
 	SignalHandler.emit_signal("player_active",true)
+	SignalHandler.emit_signal("remove_person")
 	queue_free()

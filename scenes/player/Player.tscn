@@ -2,10 +2,8 @@
 
 [ext_resource path="res://scenes/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://sprites/Main_character_idle.png" type="Texture" id=2]
-[ext_resource path="res://misc/fonts/font_small.tres" type="DynamicFont" id=3]
-[ext_resource path="res://scenes/player/UI.gd" type="Script" id=4]
-[ext_resource path="res://misc/fonts/font.tres" type="DynamicFont" id=5]
-[ext_resource path="res://icon.png" type="Texture" id=6]
+[ext_resource path="res://scenes/player/UI.gd" type="Script" id=3]
+[ext_resource path="res://misc/fonts/font2_huge.tres" type="DynamicFont" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 9, 4 )
@@ -13,6 +11,89 @@ extents = Vector2( 9, 4 )
 [sub_resource type="CapsuleShape2D" id=2]
 radius = 8.00002
 height = 16.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "stand"
+length = 0.6
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:rotation_degrees")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
+[sub_resource type="Animation" id=3]
+resource_name = "walk"
+length = 0.6
+loop = true
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0, 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:position")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ), Vector2( -1, -2 ), Vector2( 0, 0 ), Vector2( 1, -2 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Sprite:rotation_degrees")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, -3.0, 0.0, 3.0 ]
+}
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -32,25 +113,19 @@ shape = SubResource( 2 )
 texture = ExtResource( 2 )
 hframes = 3
 
-[node name="PopupPivot" type="Position2D" parent="."]
-visible = false
-position = Vector2( 0, -40 )
+[node name="UI" type="CanvasLayer" parent="."]
+script = ExtResource( 3 )
 
-[node name="PopupLabel" type="Label" parent="PopupPivot"]
-margin_left = -100.0
-margin_top = -20.0
-margin_right = 100.0
-margin_bottom = 20.0
-custom_fonts/font = ExtResource( 3 )
+[node name="PopupLabel" type="Label" parent="UI"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -198.0
+custom_fonts/font = ExtResource( 4 )
 text = "E"
 align = 1
-valign = 1
-
-[node name="UI" type="CanvasLayer" parent="."]
-script = ExtResource( 4 )
 
 [node name="Window" type="ColorRect" parent="UI"]
-visible = false
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -70,8 +145,9 @@ anchor_bottom = 1.0
 margin_right = 450.0
 margin_bottom = 120.0
 rect_min_size = Vector2( 450, 120 )
-custom_fonts/font = ExtResource( 5 )
-text = "Go home and sleep?"
+custom_fonts/font = ExtResource( 4 )
+text = "Go home and sleep?
+(this will grant Sloth)"
 align = 1
 valign = 1
 
@@ -87,8 +163,15 @@ margin_left = 86.0
 margin_right = 176.0
 margin_bottom = 90.0
 rect_min_size = Vector2( 90, 90 )
-texture_normal = ExtResource( 6 )
 expand = true
+
+[node name="Label" type="Label" parent="UI/Window/VBoxContainer/HBoxContainer/Yes"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 4 )
+text = "Yes"
+align = 1
+valign = 1
 
 [node name="Spacer" type="Control" parent="UI/Window/VBoxContainer/HBoxContainer"]
 margin_left = 180.0
@@ -102,10 +185,23 @@ margin_left = 274.0
 margin_right = 364.0
 margin_bottom = 90.0
 rect_min_size = Vector2( 90, 90 )
-texture_normal = ExtResource( 6 )
 expand = true
+
+[node name="Label" type="Label" parent="UI/Window/VBoxContainer/HBoxContainer/No"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 4 )
+text = "No"
+align = 1
+valign = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "stand"
+anims/stand = SubResource( 4 )
+anims/walk = SubResource( 3 )
 
 [connection signal="area_entered" from="InteractRange" to="." method="_on_InteractRange_area_entered"]
 [connection signal="area_exited" from="InteractRange" to="." method="_on_InteractRange_area_exited"]
 [connection signal="button_down" from="UI/Window/VBoxContainer/HBoxContainer/Yes" to="UI" method="_on_Yes_button_down"]
 [connection signal="button_down" from="UI/Window/VBoxContainer/HBoxContainer/No" to="UI" method="_on_No_button_down"]
+[connection signal="animation_started" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_started"]

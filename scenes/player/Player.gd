@@ -14,7 +14,7 @@ var active = true
 func _ready():
 	Global.player = weakref(self)
 	
-	$PopupPivot.hide()
+	$UI/PopupLabel.hide()
 	
 	if !get_parent().has_node("FollowCam"):
 		var cam = load("res://scenes/followcam/FollowCam.tscn").instance()
@@ -30,6 +30,7 @@ func _ready():
 func _physics_process(delta):
 	
 	if !active:
+		$Sprite.hide()
 		return
 	
 	dir = Vector2(
@@ -41,6 +42,16 @@ func _physics_process(delta):
 	
 	motion = move_and_slide(motion)
 	
+	
+	if dir != Vector2(0,0):
+		if $AnimationPlayer.current_animation == "stand":
+			$AnimationPlayer.play("walk")
+	elif dir == Vector2(0,0):
+		if $AnimationPlayer.current_animation == "walk":
+			$AnimationPlayer.play("stand")
+	
+	print($AnimationPlayer.current_animation)
+	
 
 func _input(event):
 	
@@ -51,7 +62,8 @@ func _input(event):
 			interact_target.interact()
 			if !(interact_target is LustHouse):
 				SignalHandler.emit_signal("player_did_bad")
-			$PopupPivot.hide()
+			$UI/PopupLabel.hide()
+			interact_target = null
 		
 		if event.scancode == KEY_Q:
 			SignalHandler.emit_signal("window_show_pressed")
@@ -73,17 +85,21 @@ func _on_player_active_changed(state):
 		$InteractRange/DetectionShape.set_deferred("disabled",true)
 
 func _on_InteractRange_area_entered(area):
-	if area is Interactable and !area.used:
+	if area is Interactable and !area.used and interact_target == null:
 		interact_target = area
-		$PopupPivot/PopupLabel.text = str("Space\n",area.detail)
-		$PopupPivot.show()
+		$UI/PopupLabel.text = str("Space\n",area.detail)
+		$UI/PopupLabel.show()
 
 
 func _on_InteractRange_area_exited(area):
 	if interact_target == area:
 		interact_target = null
-		$PopupPivot.hide()
+		$UI/PopupLabel.hide()
 
 func on_player_requested():
 	SignalHandler.emit_signal("deliver_player",self)
 
+
+
+func _on_AnimationPlayer_animation_started(anim_name):
+	pass#print("started ",anim_name)

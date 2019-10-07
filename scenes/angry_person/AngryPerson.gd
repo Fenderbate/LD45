@@ -2,12 +2,15 @@ extends Area2D
 
 var target = null
 
-export(float)var speed = 50
+export(float)var speed = 80
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	SignalHandler.connect("deliver_player",self,"on_player_delivered")
 	SignalHandler.emit_signal("request_player")
+	
+	randomize()
 
 func _physics_process(delta):
 	
